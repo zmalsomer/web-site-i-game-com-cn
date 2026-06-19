@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zmalsomer.github.io/web-site-i-game-com-cn/sitemap.xml
