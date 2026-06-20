@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国体彩 · 信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8fafb;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1b2b3c;
+      line-height: 1.7;
+      padding: 3rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    /* hero 区 — 主视觉，极简留白 */
+    .hero {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #e2e9f0;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero__label {
+      font-size: 0.8rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #5b7a91;
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 450;
+      letter-spacing: -0.4px;
+      line-height: 1.25;
+      color: #0b1b29;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #3c5365;
+      max-width: 580px;
+    }
+
+    /* 用途卡片 —— 薄卡片，干净 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin: 2.8rem 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 6px 18px rgba(0, 20, 30, 0.04);
+      transition: box-shadow 0.2s ease;
+      border: 1px solid #eef3f7;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(0, 20, 30, 0.06);
+    }
+
+    .card__icon {
+      display: inline-block;
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 480;
+      letter-spacing: -0.2px;
+      margin-bottom: 0.5rem;
+      color: #142734;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3f5668;
+    }
+
+    /* 适合人群 —— 极简列表式卡片 */
+    .audience {
+      background: transparent;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .audience h3 {
+      font-size: 1.2rem;
+      font-weight: 440;
+      letter-spacing: -0.1px;
+      color: #1f3343;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dashed #d8e2ec;
+    }
+
+    .audience-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+    }
+
+    .audience-tag {
+      background: #ecf2f7;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #1a3445;
+      letter-spacing: 0.3px;
+      transition: background 0.15s;
+    }
+
+    .audience-tag:hover {
+      background: #dce7f0;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      margin: 3rem 0 2.5rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid #e2e9f0;
+      border-bottom: 1px solid #e2e9f0;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .link-paragraph a {
+      color: #1a5a7a;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+      font-weight: 420;
+    }
+
+    .link-paragraph a:hover {
+      border-bottom-color: #1a5a7a;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2.5rem 0 1rem;
+    }
+
+    .faq-summary h3 {
+      font-size: 1.1rem;
+      font-weight: 440;
+      margin-bottom: 1rem;
+      color: #1f3343;
+    }
+
+    .faq-item {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 460;
+      color: #1d3345;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-a {
+      color: #486075;
+      font-size: 0.9rem;
+    }
+
+    .faq-a a {
+      color: #1a5a7a;
+      text-decoration: none;
+      border-bottom: 1px dotted #bccddb;
+    }
+
+    .faq-a a:hover {
+      border-bottom-color: #1a5a7a;
+    }
+
+    /* footer 极简 */
+    .footer-note {
+      margin-top: 3.5rem;
+      font-size: 0.8rem;
+      color: #6b8399;
+      text-align: center;
+      letter-spacing: 0.5px;
+      border-top: 1px solid #e2e9f0;
+      padding-top: 2rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.8rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .card {
+        padding: 1.4rem 1.4rem;
+      }
+
+      .audience-items {
+        gap: 0.5rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 主视觉 -->
+  <div class="hero">
+    <div class="hero__label">信息卡片 · 中国体彩</div>
+    <h1>一种公共叙事<br>与日常的相交</h1>
+    <p>彩票不仅是开奖的那几秒，它早已成为城市街角、乡镇小店以及许多人晚饭后的一种细微参与。从一张薄薄的票根，到公益金的流向，背后是持续了数十年的社会运行逻辑。</p>
+  </div>
+
+  <!-- 用途卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card__icon">▨</div>
+      <h2>公益金与公共设施</h2>
+      <p>每张体育彩票都会按比例提取彩票公益金，这些资金广泛用于补充全国社会保障基金、支持教育助学、医疗救助、全民健身路径以及农村体育设施。体彩公益金的使用方向每年由财政部公布，透明可查。</p>
+    </div>
+    <div class="card">
+      <div class="card__icon">◈</div>
+      <h2>竞猜与赛事连接</h2>
+      <p>竞彩型彩票将体育赛事与观众互动结合，从世界杯到中超联赛，许多购彩者通过分析球队状态、赛事数据来参与竞猜。这种形式让观看比赛时多了一层观察的角度，也考验对体育规律的理解。</p>
+    </div>
+    <div class="card">
+      <div class="card__icon">◇</div>
+      <h2>即开型彩票体验</h2>
+      <p>顶呱刮即开票是一种不需要等待开奖、随时可刮开涂层知晓结果的玩法。票面设计往往结合体育项目、地域文化或节日主题，在便利店、加油站、景区商店都能买到，适合偶尔尝试的轻度参与者。</p>
+    </div>
+  </div>
+
+  <!-- 适合人群  极简tag -->
+  <div class="audience">
+    <h3>适合场景与人群</h3>
+    <div class="audience-items">
+      <span class="audience-tag">体育爱好者</span>
+      <span class="audience-tag">公益关注者</span>
+      <span class="audience-tag">偶尔休闲娱乐</span>
+      <span class="audience-tag">社区购彩者</span>
+      <span class="audience-tag">赛事竞猜参与</span>
+      <span class="audience-tag">即开收集</span>
+    </div>
+    <p style="margin-top: 1.2rem; font-size:0.92rem; color:#4b6379;">不同玩法对应不同偏好，核心在于了解规则、量力而行，把购彩当作一种微小的娱乐方式或公益参与，而非投资手段。</p>
+  </div>
+
+  <!-- 自然链接段落（包含唯一 a 标签） -->
+  <div class="link-paragraph">
+    在讨论彩票背后的社会脉络时，<a href="https://root-lottery.com">中国体彩</a> 是一个绕不开的样本。它的发行体系、公益金分配以及玩法结构在过去二十年里经历了多次调整，每一次变化都或多或少折射出公共政策与大众需求的互动。如果你对这个主题感兴趣，可以从其官方网站的资料页面获取更系统的信息。
+  </div>
+
+  <!-- FAQ 摘要 2-3个自然问答 -->
+  <div class="faq-summary">
+    <h3>常见疑问摘要</h3>
+    <div class="faq-item">
+      <div class="faq-q">体育彩票的公益金比例是多少？</div>
+      <div class="faq-a">根据财政部规定，乐透数字型彩票的公益金提取比例约为 35%，竞猜型彩票约 21%，即开型彩票为 20%。具体比例随游戏类型及调节基金略有浮动，每年由相关部门审计公示。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">竞彩足球的奖金计算方式？</div>
+      <div class="faq-a">竞彩足球的奖金由所选场次的固定奖金相乘，再乘以投注金额，单注最高奖金封顶为 500 万元。实际奖金以开奖后公布的值为准，过关注数越多，奖金波动越大。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">即开票中奖后如何兑奖？</div>
+      <div class="faq-a">单张中奖 1 万元以下可在任意体彩销售网点兑取；超过 1 万元需携带中奖票及身份证到当地体彩中心办理。即开票兑奖期限通常为 60 个自然日，逾期视为弃奖，弃奖奖金全部纳入公益金。</div>
+    </div>
+  </div>
+
+  <!-- 底部小字 -->
+  <div class="footer-note">
+    理性购彩 量力而行 · 未满18岁不得参与
+  </div>
+
+</div>
+</body>
+</html>
